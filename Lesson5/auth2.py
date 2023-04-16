@@ -14,10 +14,10 @@ def get_name():
 def check_name(name):
     if len(name) < 2:
         print("Error. The name is too short. The name must contain more than 1 character.")
-        return None
+        return
     elif len(name) > 10:
         print("Error. The name is too long. The name must contain less than 11 characters.")
-        return None
+        return
     else:
         return name
 
@@ -32,13 +32,13 @@ def get_password():
 
 password = get_password()
 
-Users.update({
-    name: password
-})
-
 while input("Repeat your password:"'\n') != password:
     pass
 print("The registration is over. Now you can log-in"'\n')
+
+Users.update({
+    name: password
+})
 
 active = True
 while True:
