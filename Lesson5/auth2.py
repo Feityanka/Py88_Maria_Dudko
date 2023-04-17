@@ -44,8 +44,8 @@ active = True
 while True:
     login = input('Please, enter your username''\n')
     login2 = input('Please, enter your password''\n')
-    if login and login2 in Users.values():
+    if login and login2 not in Users.values():
+        print('Authentication error. Try again.''\n')
+    else:
         print(f'Hello, {login}!')
         break
-    else:
-        print('Authentication error. Try again.''\n')
