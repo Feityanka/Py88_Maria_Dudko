@@ -1,11 +1,14 @@
+from datetime import datetime
+
+
 def some_decorator(what_time):
     def the_wrapper():
-        from datetime import datetime
         current_datetime = datetime.now()
         time = datetime.now()
         print(time)
         what_time()
         print(time)
+
     return the_wrapper
 
 
