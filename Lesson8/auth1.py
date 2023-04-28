@@ -1,16 +1,20 @@
 import json
 from user import User
 
-with open("../Lesson8/db.json", "r") as f_json:
+with open("db.json", "r") as f_json:
     data = json.load(f_json)
 
 
-def check_name(data):
+def add_user(db, us):
+    db[us.name] = us.password
+
+
+def check_name(db):
     """Here we are getting a nickname for a new users registration and checking it for individuality"""
     active = True
     while active:
         username = input('Enter your nickname for a registration.' "\n")
-        if username in data.keys():
+        if username in db.keys():
             print("This nickname is already taken")
         elif 10 < len(username) or 2 > len(username):
             print("The name must consists of less than 10 chars and more than 1")
@@ -69,7 +73,7 @@ else:
     username = check_name(data)
     password = get_password()
     data[username] = password
-    with open('../Lesson8/db.json', 'w', encoding='utf8') as file:
+    with open('db.json', 'w', encoding='utf8') as file:
         file.write(json.dumps(data, indent=2, ensure_ascii=False))
     login()
 
